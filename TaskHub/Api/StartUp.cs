@@ -1,5 +1,6 @@
 using Api.UseCases.Users;
 using Api.UseCases.Users.Interfaces;
+using Api.DependencyInjection;
 using Dal;
 using Logic;
 using Microsoft.OpenApi.Models;
@@ -34,6 +35,14 @@ public sealed class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddControllers();
+
+        services.AddSingleton<SingletonService1>();
+        services.AddSingleton<SingletonService2>();
+        services.AddScoped<ScopedService1>();
+        services.AddScoped<ScopedService2>();
+        services.AddTransient<TransientService1>();
+        services.AddTransient<TransientService2>();
+
         services.AddDal();
         services.AddLogic();
         
