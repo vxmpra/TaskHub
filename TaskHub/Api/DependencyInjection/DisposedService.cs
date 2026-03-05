@@ -1,6 +1,6 @@
 namespace Api.DependencyInjection;
 
-public abstract class DisposedService : IHasInstanceId, IDisposable
+public class DisposedService : IHasInstanceId, IDisposable
 {
     public Guid InstanceId { get; } = Guid.NewGuid();
 
