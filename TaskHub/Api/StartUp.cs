@@ -1,7 +1,7 @@
 using Api.UseCases.Users;
 using Api.UseCases.Tasks;
+using Logic.Tasks.Interfaces;
 using Api.UseCases.Users.Interfaces;
-using Api.UseCases.Tasks.Interfaces;
 using Api.DependencyInjection;
 using Dal;
 using Logic;
@@ -49,7 +49,12 @@ public sealed class Startup
         services.AddLogic();
         
         services.AddScoped<IManageUserUseCase, ManageUserUseCase>();
-        services.AddScoped<IManageTaskUseCase, ManageTaskUseCase>();
+        services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
+        services.AddScoped<IGetTasksUseCase, GetTasksUseCase>();
+        services.AddScoped<IGetTaskUseCase, GetTaskUseCase>();
+        services.AddScoped<ISetTaskTitleUseCase, SetTaskTitleUseCase>();
+        services.AddScoped<IDeleteTaskUseCase, DeleteTaskUseCase>();
+        services.AddScoped<IDeleteTasksUseCase, DeleteTasksUseCase>();
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(builder =>
