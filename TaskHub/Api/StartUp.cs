@@ -3,6 +3,7 @@ using Api.UseCases.Tasks;
 using Logic.Tasks.Interfaces;
 using Api.UseCases.Users.Interfaces;
 using Api.DependencyInjection;
+using Api.Filters;
 using Dal;
 using Logic;
 using Microsoft.OpenApi.Models;
@@ -47,6 +48,11 @@ public sealed class Startup
 
         services.AddDal();
         services.AddLogic();
+        
+        services.AddScoped<StudentInfoHeadersFilter>();
+        services.AddScoped<RequestLoggingFilter>();
+        services.AddScoped<ValidateCreateTaskRequestFilter>();
+        services.AddScoped<ValidateSetTaskTitleRequestFilter>();
         
         services.AddScoped<IManageUserUseCase, ManageUserUseCase>();
         services.AddScoped<ICreateTaskUseCase, CreateTaskUseCase>();
